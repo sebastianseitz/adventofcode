@@ -1,0 +1,6 @@
+[package]
+name = "adventofcode"
+version = "0.1.0"
+authors = ["basti <12233784+sebastianseitz@users.noreply.github.com>"]
+
+[dependencies]
