@@ -4,3 +4,8 @@ version = "0.1.0"
 authors = ["basti <12233784+sebastianseitz@users.noreply.github.com>"]
 
 [dependencies]
+
+
+[[bin]]
+name = "day1"
+path = "src/day1.rs"
