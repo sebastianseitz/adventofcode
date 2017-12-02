@@ -1,22 +1,22 @@
 use std::io::BufReader;
-use std::io;
 use std::io::prelude::*;
 use std::fs::File;
 
-fn get_reader(filename: &str) -> Result<Vec<String>, io::Error> {
+fn get_reader(filename: &str) -> Vec<String> {
     println!("Reading {}", filename);
 
     let file = File::open(filename).unwrap();
     let file = BufReader::new(file);
 
-    return file.lines().collect()
+    let result: Result<Vec<String>, std::io::Error> = file.lines().collect();
+    return result.unwrap()
 }
 
 fn part_one(filename: &str) -> u32 {
-    let file = get_reader(filename);
+    let file: Vec<String> = get_reader(filename);
 
     let mut sum = 0;
-    for line in file.unwrap() {
+    for line in file {
         let mut min = u32::max_value();
         let mut max = u32::min_value();
         for candidate in line.split_whitespace() {
@@ -38,10 +38,10 @@ fn part_one(filename: &str) -> u32 {
 }
 
 fn part_two(filename: &str) -> u32 {
-    let file = get_reader(filename);
+    let file: Vec<String> = get_reader(filename);
 
     let mut sum = 0;
-    for line in file.unwrap() {
+    for line in file {
         let mut numbers: Vec<u32> = vec![];
         for candidate in line.split_whitespace() {
             numbers.push(candidate.parse().expect("NaN"));
