@@ -29,8 +29,6 @@ fn part_two(numbers: &Vec<u32>) {
 
     for idx in 0..numbers.len() {
         let cmp_idx = (idx + step) % max_idx;
-        // println!("idx: {:?}", (idx, cmp_idx));
-        // println!("val: {:?}", (numbers[idx], numbers[cmp_idx]));
         if numbers[idx] == numbers[cmp_idx] {
             sum += numbers[idx];
         }
