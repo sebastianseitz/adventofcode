@@ -1,20 +1,7 @@
-use std::io::BufReader;
-use std::io::prelude::*;
-use std::fs::File;
-
 use std::collections::HashSet;
 use std::env;
 
-
-fn get_reader(filename: String) -> Vec<String> {
-    println!("Reading {}", filename);
-
-    let file = File::open(filename).unwrap();
-    let file = BufReader::new(file);
-
-    let result: Result<Vec<String>, std::io::Error> = file.lines().collect();
-    return result.unwrap();
-}
+mod util;
 
 fn part_one(phrases: Vec<String>) -> u32 {
     let mut counter = 0;
@@ -74,7 +61,7 @@ fn part_two(phrases: Vec<String>) -> u32 {
 
 fn main() {
     let filename = env::args().nth(1).unwrap();
-    let phrases = get_reader(filename);
+    let phrases = util::read_lines(filename);
     println!("PartOne: {}", part_one(phrases.clone()));
 
     println!("PartTwo: {}", part_two(phrases.clone()));
